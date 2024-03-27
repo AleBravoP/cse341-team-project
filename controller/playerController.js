@@ -15,7 +15,7 @@ const getAllPlayers = async (req, res) => {
 
 const getSinglePlayer = async (req, res) => {
     //#swagger.tags = ["Players"]
-    //#swagger.summary = Return a player by ID
+    //#swagger.summary = Returns a player by ID
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid player id to find a player.");
     }
@@ -25,10 +25,9 @@ const getSinglePlayer = async (req, res) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(players[0]);
     }).catch((err) => {
-        res.status(400).jsson({ message: err });
-    })
+        res.status(400).json({ message: err });
+    });
 }
-
 
 const updatePlayer = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
@@ -55,4 +54,4 @@ const updatePlayer = async (req, res) => {
     }
 };
 
-module.exports = { getAllPlayers, getSinglePlayer, updatePlayer }
+module.exports = { getAllPlayers, getSinglePlayer, updatePlayer };
