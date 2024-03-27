@@ -9,4 +9,7 @@ router.get("/", tournamentController.getAllTournaments);
 // Retrieve Tournament by Id
 router.get("/:id", tournamentController.getSingleTournament);
 
+// Update Tournament by Id
+router.put("/:id", tournamentController.updateTournament);
+
 module.exports = router;

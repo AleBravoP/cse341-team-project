@@ -9,6 +9,7 @@ router.get("/", playerController.getAllPlayers);
 // Retrieve Player by Id
 router.get("/:id", playerController.getSinglePlayer);
 
+// Update Player by Id
 router.put("/:id", playerController.updatePlayer);
 
 module.exports = router;

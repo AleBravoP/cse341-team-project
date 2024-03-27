@@ -29,4 +29,28 @@ const getSingleTournament = async (req, res) => {
     });
 }
 
-module.exports = { getAllTournaments, getSingleTournament };
+const updateTournament = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid tournament id to update a tournament.");
+    }
+    const tournamentId = new ObjectId(req.params.id);
+    const tournament = {
+        ID: req.body.ID,
+        Name: req.body.Name,
+        ImageURL: req.body.ImageURL,
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("tournaments")
+        .replaceOne({ _id: tournamentId }, tournament);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(
+            response.error || "Some error occured while trying to update tournament."
+        );
+    }
+};
+
+module.exports = { getAllTournaments, getSingleTournament, updateTournament };

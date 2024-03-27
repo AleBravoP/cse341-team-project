@@ -31,7 +31,7 @@ const getSinglePlayer = async (req, res) => {
 
 const updatePlayer = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json("Must use a valid player id to find a player.");
+        res.status(400).json("Must use a valid player id to update a player.");
     }
     const playerId = new ObjectId(req.params.id);
     const player = {
