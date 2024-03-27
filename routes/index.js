@@ -13,8 +13,8 @@ router.get("/", (req, res) => {
 });
 
 router.use("/player", playerRoute);
-// router.use("/team", teamRoute);
-// router.use("/tournament", tournamentRoute);
-// router.use("/user", userRoute);
+router.use("/team", teamRoute);
+router.use("/tournament", tournamentRoute);
+router.use("/user", userRoute);
 
 module.exports = router;
