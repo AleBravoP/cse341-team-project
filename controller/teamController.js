@@ -29,4 +29,29 @@ const getSingleTeam = async (req, res) => {
     });
 }
 
-module.exports = { getAllTeams, getSingleTeam };
+const updateTeam = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid team id to update a team.");
+    }
+    const teamId = new ObjectId(req.params.id);
+    const team = {
+        ID: req.body.ID,
+        Name: req.body.Name,
+        ShortName: req.body.ShortName,
+        ImageURL: req.body.ImageURL,
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("teams")
+        .replaceOne({ _id: teamId }, team);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(
+            response.error || "Some error occured while trying to update team."
+        );
+    }
+};
+
+module.exports = { getAllTeams, getSingleTeam, updateTeam};

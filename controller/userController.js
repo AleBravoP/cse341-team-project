@@ -29,4 +29,31 @@ const getSingleUser = async (req, res) => {
     });
 }
 
-module.exports = { getAllUsers, getSingleUser };
+const updateUser = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid user id to update a user.");
+    }
+    const userId = new ObjectId(req.params.id);
+    const user = {
+        // I would like to change the names of these fields to the names below to be more consistent accross the project and remove spaces
+        AccountID: req.body.AccountID,
+        Forename: req.body.Forename,
+        Surname: req.body.Surname,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("users")
+        .replaceOne({ _id: userId }, user);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(
+            response.error || "Some error occured while trying to update user."
+        );
+    }
+};
+
+module.exports = { getAllUsers, getSingleUser, updateUser };
