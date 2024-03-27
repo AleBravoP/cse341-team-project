@@ -9,22 +9,26 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-});
-
-app.use("/", indexRoute);
+app.use(bodyParser.json())
+    .use((req, res, next) => {
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader(
+            "Access-Control-Allow-Headers",
+            "Origin, X-Requested-With, Content-Type, Accept, Z-Key"
+        );
+        res.setHeader(
+            "Access-Control-Allow-Methods",
+            "GET, POST, PUT, DELETE, OPTIONS"
+        );
+        next();
+    })
+    .use("/", indexRoute);
 
 process.on("uncaughtException", (err, origin) => {
-    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+    console.log(
+        process.stderr.fd,
+        `Caught exception: ${err}\n` + `Exception origin: ${origin}`
+    );
 });
 
 mongodb.initDb((err) => {

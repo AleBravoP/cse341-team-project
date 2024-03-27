@@ -29,4 +29,29 @@ const getSinglePlayer = async (req, res) => {
     });
 }
 
-module.exports = { getAllPlayers, getSinglePlayer };
+const updatePlayer = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid player id to find a player.");
+    }
+    const playerId = new ObjectId(req.params.id);
+    const player = {
+        ID: req.body.ID,
+        Forename: req.body.Forename,
+        Surname: req.body.Surname,
+        ImageURL: req.body.ImageURL,
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("players")
+        .replaceOne({ _id: playerId }, player);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(
+            response.error || "Some error occured while trying to update player."
+        );
+    }
+};
+
+module.exports = { getAllPlayers, getSinglePlayer, updatePlayer };
