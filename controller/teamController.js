@@ -52,6 +52,8 @@ const createTeam = async (req, res) => {
   };
 
 const updateTeam = async (req, res) => {
+    //#swagger.tags = ["Teams"]
+    //#swagger.summary = Updates an existing team
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid team id to update a team.");
     }

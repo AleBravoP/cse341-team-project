@@ -12,9 +12,9 @@ router.get("/", (req, res) => {
     res.send("Welcome to cse341 final project");
 });
 
-router.use("/player", playerRoute);
-router.use("/team", teamRoute);
-router.use("/tournament", tournamentRoute);
-router.use("/user", userRoute);
+router.use("/players", playerRoute);
+router.use("/teams", teamRoute);
+router.use("/tournaments", tournamentRoute);
+router.use("/users", userRoute);
 
 module.exports = router;

@@ -15,4 +15,7 @@ router.post("/", playerController.createPlayer);
 // Update Player by Id
 router.put("/:id", playerController.updatePlayer);
 
+// Delete Player by Id
+router.delete("/:id", playerController.deletePlayer);
+
 module.exports = router;

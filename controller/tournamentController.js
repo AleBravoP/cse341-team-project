@@ -51,6 +51,8 @@ const createTournament = async (req, res) => {
   };
 
 const updateTournament = async (req, res) => {
+    //#swagger.tags = ["Tournaments"]
+    //#swagger.summary = Updates an existing tournament
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid tournament id to update a tournament.");
     }

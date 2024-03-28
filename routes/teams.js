@@ -16,4 +16,7 @@ router.post("/", teamController.createTeam);
 // Update Team by Id
 router.put("/:id", teamController.updateTeam);
 
+// Delete Team by Id
+router.delete("/:id", teamController.deleteTeam);
+
 module.exports = router;

@@ -56,6 +56,8 @@ const createUser = async (req, res) => {
   };
 
 const updateUser = async (req, res) => {
+    //#swagger.tags = ["Users"]
+    //#swagger.summary = Updates an existing user
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid user id to update a user.");
     }
