@@ -30,6 +30,8 @@ const getSingleTeam = async (req, res) => {
 }
 
 const updateTeam = async (req, res) => {
+    //#swagger.tags = ["Teams"]
+    //#swagger.summary = Updates an existing team
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid team id to update a team.");
     }
@@ -54,4 +56,19 @@ const updateTeam = async (req, res) => {
     }
 };
 
-module.exports = { getAllTeams, getSingleTeam, updateTeam};
+const deleteTeam = async (req, res) => {
+    //#swagger.tags = ["Teams"]
+    //#swagger.summary = Deletes an existing team
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid team id to delete a team.");
+    }
+    const teamId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection("teams").deleteOne({ _id: teamId });
+    if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || "Some error occurred while deleting a team.");
+    }
+}
+
+module.exports = { getAllTeams, getSingleTeam, updateTeam, deleteTeam };

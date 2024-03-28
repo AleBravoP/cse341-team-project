@@ -15,7 +15,7 @@ const getAllPlayers = async (req, res) => {
 
 const getSinglePlayer = async (req, res) => {
     //#swagger.tags = ["Players"]
-    //#swagger.summary = Returns a player by ID
+    //#swagger.summary = Updates an existing player
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid player id to find a player.");
     }
@@ -30,6 +30,8 @@ const getSinglePlayer = async (req, res) => {
 }
 
 const updatePlayer = async (req, res) => {
+    //#swagger.tags = ["Players"]
+    //#swagger.summary = Updates an existing player
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid player id to update a player.");
     }
@@ -54,4 +56,19 @@ const updatePlayer = async (req, res) => {
     }
 };
 
-module.exports = { getAllPlayers, getSinglePlayer, updatePlayer };
+const deletePlayer = async (req, res) => {
+    //#swagger.tags = ["Players"]
+    //#swagger.summary = Deletes an existing player
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid player id to delete a player.");
+    }
+    const playerId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection("players").deleteOne({ _id: playerId });
+    if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || "Some error occurred while deleting a player.");
+    }
+}
+
+module.exports = { getAllPlayers, getSinglePlayer, updatePlayer, deletePlayer };

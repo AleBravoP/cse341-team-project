@@ -30,6 +30,8 @@ const getSingleUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
+    //#swagger.tags = ["Users"]
+    //#swagger.summary = Updates an existing user
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid user id to update a user.");
     }
@@ -56,4 +58,19 @@ const updateUser = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers, getSingleUser, updateUser };
+const deleteUser = async (req, res) => {
+    //#swagger.tags = ["Users"]
+    //#swagger.summary = Deletes an existing user
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid user id to delete a user.");
+    }
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection("users").deleteOne({ _id: userId });
+    if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || "Some error occurred while deleting a user.");
+    }
+}
+
+module.exports = { getAllUsers, getSingleUser, updateUser, deleteUser };

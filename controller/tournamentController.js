@@ -30,6 +30,8 @@ const getSingleTournament = async (req, res) => {
 }
 
 const updateTournament = async (req, res) => {
+    //#swagger.tags = ["Tournaments"]
+    //#swagger.summary = Updates an existing tournament
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json("Must use a valid tournament id to update a tournament.");
     }
@@ -53,4 +55,19 @@ const updateTournament = async (req, res) => {
     }
 };
 
-module.exports = { getAllTournaments, getSingleTournament, updateTournament };
+const deleteTournament = async (req, res) => {
+    //#swagger.tags = ["Tournaments"]
+    //#swagger.summary = Deletes an existing tournament
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json("Must use a valid tournament id to delete a tournament.");
+    }
+    const tournamentId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection("tournaments").deleteOne({ _id: tournamentId });
+    if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || "Some error occurred while deleting a tournament.");
+    }
+};
+
+module.exports = { getAllTournaments, getSingleTournament, updateTournament, deleteTournament };
