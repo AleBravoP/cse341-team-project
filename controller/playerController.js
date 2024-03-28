@@ -27,7 +27,29 @@ const getSinglePlayer = async (req, res) => {
     }).catch((err) => {
         res.status(400).json({ message: err });
     });
-}
+};
+
+const createPlayer = async (req, res) => {
+    //#swagger.tags = ["Players"]
+    //#swagger.summary = Create a new player
+    const player = {
+      ID: req.body.ID,
+      Forename: req.body.Forename,
+      Surname: req.body.Surname,
+      ImageURL: req.body.ImageURL,
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("players")
+        .insertOne(player);
+    if (response.acknowledged > 0){
+    res.status(204).send();
+    }
+    else {
+    res.status(500).json(response.error || 'Some error occurred while creating the player.');
+    }
+  };
 
 const updatePlayer = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
@@ -54,4 +76,4 @@ const updatePlayer = async (req, res) => {
     }
 };
 
-module.exports = { getAllPlayers, getSinglePlayer, updatePlayer };
+module.exports = { getAllPlayers, getSinglePlayer, createPlayer, updatePlayer };

@@ -27,7 +27,28 @@ const getSingleTournament = async (req, res) => {
     }).catch((err) => {
         res.status(400).json({ message: err });
     });
-}
+};
+
+const createTournament = async (req, res) => {
+    //#swagger.tags = ["Tournament"]
+    //#swagger.summary = Create a new tournament
+    const tournament = {
+        ID: req.body.ID,
+        Name: req.body.Name,
+        ImageURL: req.body.ImageURL,
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("tournaments")
+        .insertOne(tournament);
+    if (response.acknowledged > 0){
+    res.status(204).send();
+    }
+    else {
+    res.status(500).json(response.error || 'Some error occurred while creating the tournament.');
+    }
+  };
 
 const updateTournament = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
@@ -53,4 +74,4 @@ const updateTournament = async (req, res) => {
     }
 };
 
-module.exports = { getAllTournaments, getSingleTournament, updateTournament };
+module.exports = { getAllTournaments, getSingleTournament, createTournament, updateTournament };
