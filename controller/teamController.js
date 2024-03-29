@@ -27,7 +27,29 @@ const getSingleTeam = async (req, res) => {
     }).catch((err) => {
         res.status(400).json({ message: err});
     });
-}
+};
+
+const createTeam = async (req, res) => {
+    //#swagger.tags = ["Teams"]
+    //#swagger.summary = Create a new team
+    const team = {
+        ID: req.body.ID,
+        Name: req.body.Name,
+        ShortName: req.body.ShortName,
+        ImageURL: req.body.ImageURL,
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("teams")
+        .insertOne(team);
+    if (response.acknowledged > 0){
+    res.status(204).send();
+    }
+    else {
+    res.status(500).json(response.error || 'Some error occurred while creating the team.');
+    }
+};
 
 const updateTeam = async (req, res) => {
     //#swagger.tags = ["Teams"]
@@ -71,4 +93,4 @@ const deleteTeam = async (req, res) => {
     }
 }
 
-module.exports = { getAllTeams, getSingleTeam, updateTeam, deleteTeam };
+module.exports = { getAllTeams, getSingleTeam, updateTeam, createTeam, deleteTeam };
