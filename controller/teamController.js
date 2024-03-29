@@ -49,7 +49,7 @@ const createTeam = async (req, res) => {
     else {
     res.status(500).json(response.error || 'Some error occurred while creating the team.');
     }
-  };
+};
 
 const updateTeam = async (req, res) => {
     //#swagger.tags = ["Teams"]

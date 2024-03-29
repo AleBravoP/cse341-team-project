@@ -33,10 +33,10 @@ const createPlayer = async (req, res) => {
     //#swagger.tags = ["Players"]
     //#swagger.summary = Create a new player
     const player = {
-      ID: req.body.ID,
-      Forename: req.body.Forename,
-      Surname: req.body.Surname,
-      ImageURL: req.body.ImageURL,
+        ID: req.body.ID,
+        Forename: req.body.Forename,
+        Surname: req.body.Surname,
+        ImageURL: req.body.ImageURL,
     };
     const response = await mongodb
         .getDatabase()
@@ -49,7 +49,7 @@ const createPlayer = async (req, res) => {
     else {
     res.status(500).json(response.error || 'Some error occurred while creating the player.');
     }
-  };
+};
 
 const updatePlayer = async (req, res) => {
     //#swagger.tags = ["Players"]
@@ -78,7 +78,6 @@ const updatePlayer = async (req, res) => {
     }
 };
 
-module.exports = { getAllPlayers, getSinglePlayer, createPlayer, updatePlayer };
 const deletePlayer = async (req, res) => {
     //#swagger.tags = ["Players"]
     //#swagger.summary = Deletes an existing player
@@ -92,6 +91,6 @@ const deletePlayer = async (req, res) => {
     } else {
         res.status(500).json(response.error || "Some error occurred while deleting a player.");
     }
-}
+};
 
-module.exports = { getAllPlayers, getSinglePlayer, updatePlayer, deletePlayer };
+module.exports = { getAllPlayers, getSinglePlayer, createPlayer, updatePlayer, deletePlayer };

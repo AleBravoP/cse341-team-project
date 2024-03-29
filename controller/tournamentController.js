@@ -48,7 +48,7 @@ const createTournament = async (req, res) => {
     else {
     res.status(500).json(response.error || 'Some error occurred while creating the tournament.');
     }
-  };
+};
 
 const updateTournament = async (req, res) => {
     //#swagger.tags = ["Tournaments"]

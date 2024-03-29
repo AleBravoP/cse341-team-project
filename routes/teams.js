@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const teamController = require("../controller/teamController");
-const { updatePlayer } = require("../controller/playerController");
 
 // Retrieve All Teams
 router.get("/", teamController.getAllTeams);
@@ -12,6 +11,7 @@ router.get("/:id", teamController.getSingleTeam);
 
 // Create Tournament
 router.post("/", teamController.createTeam);
+
 
 // Update Team by Id
 router.put("/:id", teamController.updateTeam);
