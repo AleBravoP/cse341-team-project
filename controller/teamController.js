@@ -57,8 +57,6 @@ const createTeam = async (req, res) => {
         .db()
         .collection("teams")
         .insertOne(team);
-    console.log("**************************")
-    console.log(response.acknowledged)
     if (response.acknowledged > 0){
     res.status(200).send({
         message: 'Team created.' 
