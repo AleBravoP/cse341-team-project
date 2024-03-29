@@ -5,7 +5,7 @@
     "description": "Teams API",
     "version": "1.0.0"
   },
-  "host": "cse341-team-project",
+  "host": "cse341-team-project.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
