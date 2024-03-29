@@ -30,7 +30,7 @@ const getSingleUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    //#swagger.tags = ["User"]
+    //#swagger.tags = ["Users"]
     //#swagger.summary = Create a new user
     const user = {
         AccountID: req.body.AccountID,
