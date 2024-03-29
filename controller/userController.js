@@ -32,40 +32,39 @@ const getSingleUser = async (req, res) => {
 
 const createUser = async (req, res) => {
      // Validate request
-  if (!req.body.forename) {
-    res.status(400).send({ message: 'Name can not be empty!' });
-    return;
-  }
+    if (!req.body.forename) {
+        res.status(400).send({ message: 'Name can not be empty!' });
+        return;
+    }
 
-  if (!req.body.surname) {
-    res.status(400).send({ message: 'Last name can not be empty!' });
-    return;
-  }
+    if (!req.body.surname) {
+        res.status(400).send({ message: 'Last name can not be empty!' });
+        return;
+    }
 
-   if (!req.body.email) {
-    res.status(400).send({ message: 'Email can not be empty!' });
-    return;
-  }
+    if (!req.body.email) {
+        res.status(400).send({ message: 'Email can not be empty!' });
+        return;
+    }
 
-  if (!req.body.birthday) {
-    res.status(400).send({ message: 'Birthday name can not be empty!' });
-    return;
-  }
+    if (!req.body.birthday) {
+        res.status(400).send({ message: 'Birthday name can not be empty!' });
+        return;
+    }
 
- if (!req.body.favorite_color) {
-    res.status(400).send({ message: 'Favorite color can not be empty!' });
-    return;
-  }
+    if (!req.body.favorite_color) {
+        res.status(400).send({ message: 'Favorite color can not be empty!' });
+        return;
+    }
 
-  if (!req.body.favorite_team) {
-    res.status(400).send({ message: 'Favorite team name can not be empty!' });
-    return;
-  }
- if (!req.body.favorite_player) {
-    res.status(400).send({ message: 'Favorite player can not be empty!' });
-    return;
-  };
-
+    if (!req.body.favorite_team) {
+        res.status(400).send({ message: 'Favorite team name can not be empty!' });
+        return;
+    }
+    if (!req.body.favorite_player) {
+        res.status(400).send({ message: 'Favorite player can not be empty!' });
+        return;
+    };
 
     //#swagger.tags = ["Users"]
     //#swagger.summary = Create a new user
@@ -85,12 +84,12 @@ const createUser = async (req, res) => {
         .collection("users")
         .insertOne(user);
     if (response.acknowledged > 0){
-    res.status(200).send({
-        message: 'User created with id: ' + response.insertedId
-      });
+        res.status(200).send({
+            message: 'User created with id: ' + response.insertedId
+        });
     }
     else {
-    res.status(500).json(response.error || 'Some error occurred while creating the user.');
+        res.status(500).json(response.error || 'Some error occurred while creating the user.');
     }
 };
 
@@ -120,7 +119,7 @@ const updateUser = async (req, res) => {
     if (response.modifiedCount > 0) {
         res.status(200).send({
             message: 'User updated'
-          });
+        });
     } else {
         res.status(500).json(
             response.error || "Some error occured while trying to update user."

@@ -30,12 +30,12 @@ const getSingleTournament = async (req, res) => {
 };
 
 const createTournament = async (req, res) => {
-     //Validate request
+    //Validate request
     if (!req.body.name) {
         res.status(400).send({ message: 'Tournament name can not be empty!' });
         return;
-      }
-    //#swagger.tags = ["Tournament"]
+    }
+    //#swagger.tags = ["Tournaments"]
     //#swagger.summary = Create a new tournament
     const tournament = {
         ID: req.body.ID,
@@ -48,12 +48,12 @@ const createTournament = async (req, res) => {
         .collection("tournaments")
         .insertOne(tournament);
     if (response.acknowledged > 0){
-    res.status(200).send({
-        message: 'Tournament created'
-      });
+        res.status(200).send({
+            message: 'Tournament created'
+        });
     }
     else {
-    res.status(500).json(response.error || 'Some error occurred while creating the tournament.');
+        res.status(500).json(response.error || 'Some error occurred while creating the tournament.');
     }
 };
 

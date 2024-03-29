@@ -67,8 +67,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"
@@ -84,7 +84,7 @@
         "tags": [
           "Players"
         ],
-        "summary": "Updates an existing player",
+        "summary": "Returns a player by ID",
         "description": "",
         "produces": [
           "application/json"
@@ -142,8 +142,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"
@@ -366,7 +366,7 @@
       },
       "post": {
         "tags": [
-          "Tournament"
+          "Tournaments"
         ],
         "summary": "Create a new tournament",
         "description": "",
@@ -391,8 +391,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
