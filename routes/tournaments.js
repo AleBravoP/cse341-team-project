@@ -12,6 +12,9 @@ router.get("/:id", tournamentController.getSingleTournament);
 // Update Tournament by Id
 router.put("/:id", tournamentController.updateTournament);
 
+// Update Tournament by Id
+router.put("/:id", tournamentController.updateTournament);
+
 // Delete Tournament by Id
 router.delete("/:id", tournamentController.deleteTournament);
 
