@@ -5,7 +5,7 @@
     "description": "Teams API",
     "version": "1.0.0"
   },
-  "host": "cse341-team-project.onrender.com",
+  "host": "cse341-team-project",
   "basePath": "/",
   "schemes": [
     "https"
@@ -35,8 +35,8 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -53,16 +53,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "ID": {
+                "forename": {
                   "example": "any"
                 },
-                "Forename": {
+                "surname": {
                   "example": "any"
                 },
-                "Surname": {
-                  "example": "any"
-                },
-                "ImageURL": {
+                "imageURL": {
                   "example": "any"
                 }
               }
@@ -70,8 +67,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -103,6 +103,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -125,16 +128,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "ID": {
+                "forename": {
                   "example": "any"
                 },
-                "Forename": {
+                "surname": {
                   "example": "any"
                 },
-                "Surname": {
-                  "example": "any"
-                },
-                "ImageURL": {
+                "imageURL": {
                   "example": "any"
                 }
               }
@@ -142,8 +142,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -194,8 +194,8 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -212,16 +212,16 @@
             "schema": {
               "type": "object",
               "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "shortName": {
+                  "example": "any"
+                },
                 "ID": {
                   "example": "any"
                 },
-                "Name": {
-                  "example": "any"
-                },
-                "ShortName": {
-                  "example": "any"
-                },
-                "ImageURL": {
+                "imageURL": {
                   "example": "any"
                 }
               }
@@ -229,8 +229,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -262,6 +265,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -287,13 +293,13 @@
                 "ID": {
                   "example": "any"
                 },
-                "Name": {
+                "name": {
                   "example": "any"
                 },
-                "ShortName": {
+                "shortName": {
                   "example": "any"
                 },
-                "ImageURL": {
+                "imageURL": {
                   "example": "any"
                 }
               }
@@ -301,8 +307,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -360,7 +366,7 @@
       },
       "post": {
         "tags": [
-          "Tournaments"
+          "Tournament"
         ],
         "summary": "Create a new tournament",
         "description": "",
@@ -371,13 +377,13 @@
             "schema": {
               "type": "object",
               "properties": {
+                "name": {
+                  "example": "any"
+                },
                 "ID": {
                   "example": "any"
                 },
-                "Name": {
-                  "example": "any"
-                },
-                "ImageURL": {
+                "imageURL": {
                   "example": "any"
                 }
               }
@@ -387,6 +393,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -443,10 +452,10 @@
                 "ID": {
                   "example": "any"
                 },
-                "Name": {
+                "name": {
                   "example": "any"
                 },
-                "ImageURL": {
+                "imageURL": {
                   "example": "any"
                 }
               }
@@ -454,8 +463,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -524,28 +533,28 @@
             "schema": {
               "type": "object",
               "properties": {
-                "AccountID": {
+                "forename": {
                   "example": "any"
                 },
-                "Forename": {
+                "surname": {
                   "example": "any"
                 },
-                "Surname": {
+                "email": {
                   "example": "any"
                 },
-                "Email": {
+                "birthday": {
                   "example": "any"
                 },
-                "Birthday": {
+                "favorite_color": {
                   "example": "any"
                 },
-                "Favorite_color": {
+                "favorite_team": {
                   "example": "any"
                 },
-                "Favorite_team": {
+                "favorite_player": {
                   "example": "any"
                 },
-                "Favorite_player": {
+                "accountID": {
                   "example": "any"
                 }
               }
@@ -553,8 +562,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -608,28 +620,28 @@
             "schema": {
               "type": "object",
               "properties": {
-                "AccountID": {
+                "accountID": {
                   "example": "any"
                 },
-                "Forename": {
+                "forename": {
                   "example": "any"
                 },
-                "Surname": {
+                "surname": {
                   "example": "any"
                 },
-                "Email": {
+                "email": {
                   "example": "any"
                 },
-                "Birthday": {
+                "birthday": {
                   "example": "any"
                 },
-                "Favorite_color": {
+                "favorite_color": {
                   "example": "any"
                 },
-                "Favorite_team": {
+                "favorite_team": {
                   "example": "any"
                 },
-                "Favorite_player": {
+                "favorite_player": {
                   "example": "any"
                 }
               }
@@ -637,8 +649,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"

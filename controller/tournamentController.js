@@ -30,12 +30,17 @@ const getSingleTournament = async (req, res) => {
 };
 
 const createTournament = async (req, res) => {
+     //Validate request
+    if (!req.body.name) {
+        res.status(400).send({ message: 'Tournament name can not be empty!' });
+        return;
+      }
     //#swagger.tags = ["Tournament"]
     //#swagger.summary = Create a new tournament
     const tournament = {
         ID: req.body.ID,
-        Name: req.body.Name,
-        ImageURL: req.body.ImageURL,
+        name: req.body.name,
+        imageURL: req.body.imageURL,
     };
     const response = await mongodb
         .getDatabase()
@@ -43,7 +48,9 @@ const createTournament = async (req, res) => {
         .collection("tournaments")
         .insertOne(tournament);
     if (response.acknowledged > 0){
-    res.status(204).send();
+    res.status(200).send({
+        message: 'Tournament created'
+      });
     }
     else {
     res.status(500).json(response.error || 'Some error occurred while creating the tournament.');
@@ -59,8 +66,8 @@ const updateTournament = async (req, res) => {
     const tournamentId = new ObjectId(req.params.id);
     const tournament = {
         ID: req.body.ID,
-        Name: req.body.Name,
-        ImageURL: req.body.ImageURL,
+        name: req.body.name,
+        imageURL: req.body.imageURL,
     };
     const response = await mongodb
         .getDatabase()
@@ -68,7 +75,9 @@ const updateTournament = async (req, res) => {
         .collection("tournaments")
         .replaceOne({ _id: tournamentId }, tournament);
     if (response.modifiedCount > 0) {
-        res.status(204).send();
+        res.status(200).send({
+            message: 'Tournament updated'
+          });
     } else {
         res.status(500).json(
             response.error || "Some error occured while trying to update tournament."

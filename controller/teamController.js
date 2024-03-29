@@ -9,8 +9,10 @@ const getAllTeams = async (req, res) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(teams);
     }).catch((err) => {
-        res.status(400).json({ message: err });
-    });
+        res.status(500).send({
+          message: err.message || 'Some error occurred while retrieving all teams.'
+        });
+      });
 };
 
 const getSingleTeam = async (req, res) => {
@@ -25,26 +27,42 @@ const getSingleTeam = async (req, res) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(teams[0]);
     }).catch((err) => {
-        res.status(400).json({ message: err});
-    });
+        res.status(500).send({
+          message: err.message || 'Some error occurred while retrieving the team.'
+        });
+      });
 };
 
 const createTeam = async (req, res) => {
+    //Validation
+    if (!req.body.name) {
+        res.status(400).send({ message: 'Name can not be empty!' });
+        return;
+      }
+    
+      if (!req.body.shortName) {
+        res.status(400).send({ message: 'Short name can not be empty!' });
+        return;
+      }
     //#swagger.tags = ["Teams"]
     //#swagger.summary = Create a new team
     const team = {
         ID: req.body.ID,
-        Name: req.body.Name,
-        ShortName: req.body.ShortName,
-        ImageURL: req.body.ImageURL,
+        name: req.body.name,
+        shortName: req.body.shortName,
+        imageURL: req.body.imageURL,
     };
     const response = await mongodb
         .getDatabase()
         .db()
         .collection("teams")
         .insertOne(team);
+    console.log("**************************")
+    console.log(response.acknowledged)
     if (response.acknowledged > 0){
-    res.status(204).send();
+    res.status(200).send({
+        message: 'Team created.' 
+      });
     }
     else {
     res.status(500).json(response.error || 'Some error occurred while creating the team.');
@@ -60,9 +78,9 @@ const updateTeam = async (req, res) => {
     const teamId = new ObjectId(req.params.id);
     const team = {
         ID: req.body.ID,
-        Name: req.body.Name,
-        ShortName: req.body.ShortName,
-        ImageURL: req.body.ImageURL,
+        name: req.body.name,
+        shortName: req.body.shortName,
+        imageURL: req.body.imageURL,
     };
     const response = await mongodb
         .getDatabase()
@@ -70,7 +88,9 @@ const updateTeam = async (req, res) => {
         .collection("teams")
         .replaceOne({ _id: teamId }, team);
     if (response.modifiedCount > 0) {
-        res.status(204).send();
+        res.status(200).send({
+            message: 'Team updated'
+          });
     } else {
         res.status(500).json(
             response.error || "Some error occured while trying to update the team."
