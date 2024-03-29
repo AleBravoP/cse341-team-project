@@ -39,6 +39,44 @@
             "description": "Bad Request"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Players"
+        ],
+        "summary": "Create a new player",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "example": "any"
+                },
+                "Forename": {
+                  "example": "any"
+                },
+                "Surname": {
+                  "example": "any"
+                },
+                "ImageURL": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/players/{id}": {
@@ -158,6 +196,44 @@
           },
           "400": {
             "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "Create a new team",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "example": "any"
+                },
+                "Name": {
+                  "example": "any"
+                },
+                "ShortName": {
+                  "example": "any"
+                },
+                "ImageURL": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -281,6 +357,41 @@
             "description": "Bad Request"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Tournaments"
+        ],
+        "summary": "Create a new tournament",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "example": "any"
+                },
+                "Name": {
+                  "example": "any"
+                },
+                "ImageURL": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/tournaments/{id}": {
@@ -399,6 +510,56 @@
             "description": "Bad Request"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a new user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "AccountID": {
+                  "example": "any"
+                },
+                "Forename": {
+                  "example": "any"
+                },
+                "Surname": {
+                  "example": "any"
+                },
+                "Email": {
+                  "example": "any"
+                },
+                "Birthday": {
+                  "example": "any"
+                },
+                "Favorite_color": {
+                  "example": "any"
+                },
+                "Favorite_team": {
+                  "example": "any"
+                },
+                "Favorite_player": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/users/{id}": {
@@ -460,6 +621,15 @@
                   "example": "any"
                 },
                 "Birthday": {
+                  "example": "any"
+                },
+                "Favorite_color": {
+                  "example": "any"
+                },
+                "Favorite_team": {
+                  "example": "any"
+                },
+                "Favorite_player": {
                   "example": "any"
                 }
               }

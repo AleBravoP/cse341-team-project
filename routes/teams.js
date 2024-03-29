@@ -9,9 +9,8 @@ router.get("/", teamController.getAllTeams);
 // Retrieve Team by Id
 router.get("/:id", teamController.getSingleTeam);
 
-// Create Tournament
+// Create Team
 router.post("/", teamController.createTeam);
-
 
 // Update Team by Id
 router.put("/:id", teamController.updateTeam);
