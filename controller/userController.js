@@ -29,6 +29,32 @@ const getSingleUser = async (req, res) => {
     });
 }
 
+const createUser = async (req, res) => {
+    //#swagger.tags = ["User"]
+    //#swagger.summary = Create a new user
+    const user = {
+        AccountID: req.body.AccountID,
+        Forename: req.body.Forename,
+        Surname: req.body.Surname,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday,
+        Favorite_color: req.body.Favorite_color,
+        Favorite_team: req.body.Favorite_team,
+        Favorite_player: req.body.Favorite_player
+    };
+    const response = await mongodb
+        .getDatabase()
+        .db()
+        .collection("users")
+        .insertOne(user);
+    if (response.acknowledged > 0){
+    res.status(204).send();
+    }
+    else {
+    res.status(500).json(response.error || 'Some error occurred while creating the user.');
+    }
+};
+
 const updateUser = async (req, res) => {
     //#swagger.tags = ["Users"]
     //#swagger.summary = Updates an existing user
@@ -42,7 +68,10 @@ const updateUser = async (req, res) => {
         Forename: req.body.Forename,
         Surname: req.body.Surname,
         Email: req.body.Email,
-        Birthday: req.body.Birthday
+        Birthday: req.body.Birthday,
+        Favorite_color: req.body.Favorite_color,
+        Favorite_team: req.body.Favorite_team,
+        Favorite_player: req.body.Favorite_player
     };
     const response = await mongodb
         .getDatabase()
@@ -73,4 +102,4 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { getAllUsers, getSingleUser, updateUser, deleteUser };
+module.exports = { getAllUsers, getSingleUser, updateUser, createUser, deleteUser };
