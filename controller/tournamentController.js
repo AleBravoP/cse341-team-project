@@ -30,7 +30,7 @@ const getSingleTournament = async (req, res) => {
 };
 
 const createTournament = async (req, res) => {
-    //#swagger.tags = ["Tournament"]
+    //#swagger.tags = ["Tournaments"]
     //#swagger.summary = Create a new tournament
     const tournament = {
         ID: req.body.ID,
