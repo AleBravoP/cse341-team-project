@@ -73,7 +73,7 @@ const updateTeam = async (req, res) => {
         res.status(204).send();
     } else {
         res.status(500).json(
-            response.error || "Some error occured while trying to update team."
+            response.error || "Some error occured while trying to update the team."
         );
     }
 };

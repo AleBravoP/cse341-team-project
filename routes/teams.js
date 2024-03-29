@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const teamController = require("../controller/teamController");
-const { updatePlayer } = require("../controller/playerController");
 
 // Retrieve All Teams
 router.get("/", teamController.getAllTeams);
