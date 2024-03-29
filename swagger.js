@@ -5,8 +5,8 @@ const doc = {
         title: "Teams API",
         description: "Teams API"
     },
-    host: "localhost:3000",
-    schemes: ["http"]
+    host: "cse341-team-project.onrender.com",
+    schemes: ["https"]
 };
 
 const outputFile = "./swagger.json";
