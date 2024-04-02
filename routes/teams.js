@@ -3,6 +3,8 @@ const router = express.Router();
 
 const teamController = require("../controller/teamController");
 
+const validation = require("../middleware/validate");
+
 // Retrieve All Teams
 router.get("/", teamController.getAllTeams);
 
@@ -10,10 +12,10 @@ router.get("/", teamController.getAllTeams);
 router.get("/:id", teamController.getSingleTeam);
 
 // Create Team
-router.post("/", teamController.createTeam);
+router.post("/", validation.validateTeam, teamController.createTeam);
 
 // Update Team by Id
-router.put("/:id", teamController.updateTeam);
+router.put("/:id", validation.validateTeam, teamController.updateTeam);
 
 // Delete Team by Id
 router.delete("/:id", teamController.deleteTeam);

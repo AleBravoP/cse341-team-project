@@ -35,15 +35,15 @@ const getSinglePlayer = async (req, res) => {
 
 const createPlayer = async (req, res) => {
     // Validate request
-    if (!req.body.forename) {
-        res.status(400).send({ message: 'Name can not be empty!' });
-        return;
-    }
+    // if (!req.body.forename) {
+    //     res.status(400).send({ message: 'Name can not be empty!' });
+    //     return;
+    // }
 
-    if (!req.body.surname) {
-        res.status(400).send({ message: 'Last name can not be empty!' });
-        return;
-    }
+    // if (!req.body.surname) {
+    //     res.status(400).send({ message: 'Last name can not be empty!' });
+    //     return;
+    // }
 
     //#swagger.tags = ["Players"]
     //#swagger.summary = Create a new player

@@ -31,40 +31,40 @@ const getSingleUser = async (req, res) => {
 
 
 const createUser = async (req, res) => {
-     // Validate request
-    if (!req.body.forename) {
-        res.status(400).send({ message: 'Name can not be empty!' });
-        return;
-    }
+    // Validate request
+    // if (!req.body.forename) {
+    //     res.status(400).send({ message: 'Name can not be empty!' });
+    //     return;
+    // }
 
-    if (!req.body.surname) {
-        res.status(400).send({ message: 'Last name can not be empty!' });
-        return;
-    }
+    // if (!req.body.surname) {
+    //     res.status(400).send({ message: 'Last name can not be empty!' });
+    //     return;
+    // }
 
-    if (!req.body.email) {
-        res.status(400).send({ message: 'Email can not be empty!' });
-        return;
-    }
+    // if (!req.body.email) {
+    //     res.status(400).send({ message: 'Email can not be empty!' });
+    //     return;
+    // }
 
-    if (!req.body.birthday) {
-        res.status(400).send({ message: 'Birthday name can not be empty!' });
-        return;
-    }
+    // if (!req.body.birthday) {
+    //     res.status(400).send({ message: 'Birthday name can not be empty!' });
+    //     return;
+    // }
 
-    if (!req.body.favorite_color) {
-        res.status(400).send({ message: 'Favorite color can not be empty!' });
-        return;
-    }
+    // if (!req.body.favorite_color) {
+    //     res.status(400).send({ message: 'Favorite color can not be empty!' });
+    //     return;
+    // }
 
-    if (!req.body.favorite_team) {
-        res.status(400).send({ message: 'Favorite team name can not be empty!' });
-        return;
-    }
-    if (!req.body.favorite_player) {
-        res.status(400).send({ message: 'Favorite player can not be empty!' });
-        return;
-    };
+    // if (!req.body.favorite_team) {
+    //     res.status(400).send({ message: 'Favorite team name can not be empty!' });
+    //     return;
+    // }
+    // if (!req.body.favorite_player) {
+    //     res.status(400).send({ message: 'Favorite player can not be empty!' });
+    //     return;
+    // };
 
     //#swagger.tags = ["Users"]
     //#swagger.summary = Create a new user

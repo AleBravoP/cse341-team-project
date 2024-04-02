@@ -3,6 +3,8 @@ const router = express.Router();
 
 const playerController = require("../controller/playerController");
 
+const validation = require("../middleware/validate");
+
 // Retrieve All Players
 router.get("/", playerController.getAllPlayers);
 
@@ -10,10 +12,10 @@ router.get("/", playerController.getAllPlayers);
 router.get("/:id", playerController.getSinglePlayer);
 
 // Create Player
-router.post("/", playerController.createPlayer);
+router.post("/", validation.validatePlayer, playerController.createPlayer);
 
 // Update Player by Id
-router.put("/:id", playerController.updatePlayer);
+router.put("/:id", validation.validatePlayer, playerController.updatePlayer);
 
 // Delete Player by Id
 router.delete("/:id", playerController.deletePlayer);
