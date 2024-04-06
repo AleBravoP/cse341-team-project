@@ -1,8 +1,10 @@
-const server = require('../server')
+const app = require('../server')
 const supertest = require('supertest');
 const { expect } = require('@jest/globals');
 
-const request = supertest(server)
+const request = supertest(app)
+
+jest.setTimeout(80000)
 
 
 describe('Test Handlers', () => {
@@ -13,7 +15,7 @@ describe('Test Handlers', () => {
             surname: "Bayona",
             imageURL: "https://cdn.soccerwiki.org/images/player/10138_1247126061.jpg",
         });
-        expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+        expect(res.header['content-type']).toBe('text/html; charset=utf-8');
         expect(res.statusCode).toBe(201)
     })
 

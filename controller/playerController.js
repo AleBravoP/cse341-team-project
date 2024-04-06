@@ -63,7 +63,7 @@ const createPlayer = async (req, res) => {
   const response = await mongodb.getDatabase().db().collection('players').insertOne(player);
 
   if (response.acknowledged > 0) {
-    res.status(204).send({
+    res.status(201).send({
       message: 'Player created with id: ' + response.insertedId
     });
   } else {
