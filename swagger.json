@@ -540,7 +540,8 @@
               "type": "object",
               "properties": {
                 "accountID": {
-                  "example": "any",
+                  "example": "any"
+                },
                 "forename": {
                   "example": "any"
                 },
@@ -650,7 +651,6 @@
                 "favorite_player": {
                   "example": "any"
                 }
-              }
             }
           }
         ],
