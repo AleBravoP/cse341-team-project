@@ -53,6 +53,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "ID": {
+                  "example": "any"
+                },
                 "forename": {
                   "example": "any"
                 },
@@ -128,6 +131,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "ID": {
+                  "example": "any"
+                },
                 "forename": {
                   "example": "any"
                 },
@@ -212,13 +218,13 @@
             "schema": {
               "type": "object",
               "properties": {
+                "ID": {
+                  "example": "any"
+                },
                 "name": {
                   "example": "any"
                 },
                 "shortName": {
-                  "example": "any"
-                },
-                "ID": {
                   "example": "any"
                 },
                 "imageURL": {
@@ -377,10 +383,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+               "ID": {
                   "example": "any"
                 },
-                "ID": {
+                "name": {
                   "example": "any"
                 },
                 "imageURL": {
@@ -533,6 +539,8 @@
             "schema": {
               "type": "object",
               "properties": {
+                "accountID": {
+                  "example": "any",
                 "forename": {
                   "example": "any"
                 },
@@ -553,9 +561,7 @@
                 },
                 "favorite_player": {
                   "example": "any"
-                },
-                "accountID": {
-                  "example": "any"
+                }
                 }
               }
             }
