@@ -50,7 +50,8 @@ const createTournament = async (req, res) => {
         .insertOne(tournament);
     if (response.acknowledged > 0){
         res.status(200).send({
-            message: 'Tournament created'
+            message: 'Tournament created',
+            id: response.insertedId
         });
     }
     else {

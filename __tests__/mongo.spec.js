@@ -3,13 +3,15 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
+
 describe('insert', () => {
     let connection;
     let db;
 
     beforeAll(async () => {
 
-        connection = await MongoClient.connect(process.env.MONGODB_URL, {
+        connection = await MongoClient.connect(
+            process.env.MONGODB_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -24,7 +26,7 @@ describe('insert', () => {
 
         const mockUser = {
             ID: 4000,
-            _id: 'some-user-id',
+            id: 'some-user-id',
             forename: "Andres",
             surname: "Bayona",
             imageURL: "https://cdn.soccerwiki.org/images/player/10138_1247126061.jpg",

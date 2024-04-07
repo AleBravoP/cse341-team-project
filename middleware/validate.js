@@ -22,9 +22,9 @@ const validatePlayer = (req, res, next) => {
 const validateTeam = (req, res, next) => {
     const validationRules = {
         ID: "required|integer",
-        name: "required!string",
+        name: "required|string",
         shortName: "required|string",
-        imageURl: "required|string"
+        imageURL: "required|string"
     };
     validator(req.body, validationRules, {}, (err, status) => {
         if (!status) {
