@@ -64,7 +64,8 @@ const createPlayer = async (req, res) => {
 
   if (response.acknowledged > 0) {
     res.status(201).send({
-      message: 'Player created with id: ' + response.insertedId
+      message: 'Player created with id: ' + response.insertedId,
+      id: response.insertedId
     });
   } else {
     res.status(500).json(response.error || 'Some error occurred while creating the player.');
@@ -90,7 +91,7 @@ const updatePlayer = async (req, res) => {
     .collection('players')
     .replaceOne({ _id: playerId }, player);
   if (response.modifiedCount > 0) {
-    res.status(204).send({
+    res.status(200).send({
       message: 'Player updated with id: ' + playerId
     });
   } else {

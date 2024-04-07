@@ -58,9 +58,13 @@ const createTeam = async (req, res) => {
         .db()
         .collection("teams")
         .insertOne(team);
+
+    console.log(response)
+
     if (response.acknowledged > 0){
         res.status(200).send({
-            message: 'Team created.' 
+            message: 'Team created.' ,
+            id: response.insertedId
         });
     }
     else {
@@ -86,6 +90,7 @@ const updateTeam = async (req, res) => {
         .db()
         .collection("teams")
         .replaceOne({ _id: teamId }, team);
+
     if (response.modifiedCount > 0) {
         res.status(200).send({
             message: 'Team updated'

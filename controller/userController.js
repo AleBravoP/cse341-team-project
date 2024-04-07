@@ -85,7 +85,8 @@ const createUser = async (req, res) => {
         .insertOne(user);
     if (response.acknowledged > 0){
         res.status(200).send({
-            message: 'User created with id: ' + response.insertedId
+            message: 'User created with id: ' + response.insertedId,
+            id: response.insertedId
         });
     }
     else {

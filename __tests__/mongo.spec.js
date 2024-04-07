@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const dotenv = require('dotenv');
 dotenv.config();
 
-jest.setTimeout(60000)
+
 
 describe('insert', () => {
     let connection;

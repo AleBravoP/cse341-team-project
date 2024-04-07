@@ -28,5 +28,9 @@
     "nodemon": "^3.1.0",
     "supertest": "^6.3.4",
     "swagger-autogen": "^2.23.7"
+  },
+  "jest": {
+    "verbose": true,
+    "preset": "@shelf/jest-mongodb"
   }
 }

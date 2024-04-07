@@ -20,7 +20,7 @@ app.use(bodyParser.json())
             "Access-Control-Allow-Methods",
             "GET, POST, PUT, DELETE, OPTIONS"
         );
-        next();
+        next()
     })
     .use("/", indexRoute);
 
@@ -30,15 +30,14 @@ process.on("uncaughtException", (err, origin) => {
         `Caught exception: ${err}\n` + `Exception origin: ${origin}`
     );
 });
-
 mongodb.initDb((err) => {
     if (err) {
         console.log(err);
-    } else {
-        app.listen(port, () => {
-            console.log(`Connected to database and listening on port ${port}.`);
-        });
     }
+});
+
+app.listen(port, () => {
+    console.log(`Connected to database and listening on port ${port}.`);
 });
 
 module.exports = app;
