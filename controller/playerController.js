@@ -55,7 +55,7 @@ const createPlayer = async (req, res) => {
   //#swagger.tags = ["Players"]
   //#swagger.summary = Create a new player
   const player = {
-    ID: req.body.id,
+    ID: req.body.ID,
     forename: req.body.forename,
     surname: req.body.surname,
     imageURL: req.body.imageURL

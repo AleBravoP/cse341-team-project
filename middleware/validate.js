@@ -2,6 +2,7 @@ const validator = require("../helpers/validate");
 
 const validatePlayer = (req, res, next) => {
     const validationRules = {
+        ID: "required|integer",
         forename: "required|string",
         surname: "required|string",
         imageURL: "required|string"
