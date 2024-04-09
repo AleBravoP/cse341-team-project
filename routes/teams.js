@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const teamController = require("../controller/teamController");
+const { isAuthenticated } = require('../middleware/authenticate');
 
 const validation = require("../middleware/validate");
 
@@ -12,12 +13,12 @@ router.get("/", teamController.getAllTeams);
 router.get("/:id", teamController.getSingleTeam);
 
 // Create Team
-router.post("/", validation.validateTeam, teamController.createTeam);
+router.post("/", isAuthenticated, validation.validateTeam, teamController.createTeam);
 
 // Update Team by Id
-router.put("/:id", validation.validateTeam, teamController.updateTeam);
+router.put("/:id", isAuthenticated, validation.validateTeam, teamController.updateTeam);
 
 // Delete Team by Id
-router.delete("/:id", teamController.deleteTeam);
+router.delete("/:id", isAuthenticated, teamController.deleteTeam);
 
 module.exports = router;
