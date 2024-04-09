@@ -33,7 +33,7 @@ app.use(bodyParser.json())
             'Access-Control-Allow-Methods',
             'POST, GET, PUT, PATCH, OPTIONS, DELETE'
         );
-        next();
+        next()
     })
     .use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }))
     .use(cors({ orgin: '*' }))
@@ -91,9 +91,11 @@ app.get('/', (req, res) => {
 mongodb.initDb((err) => {
     if (err) {
         console.log(err);
-    } else {
-        app.listen(port, () => {
-            console.log(`Connected to database and listening on port ${port}.`);
-        });
     }
 });
+
+app.listen(port, () => {
+    console.log(`Connected to database and listening on port ${port}.`);
+});
+
+module.exports = app;

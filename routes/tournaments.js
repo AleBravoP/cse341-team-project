@@ -4,6 +4,8 @@ const router = express.Router();
 const tournamentController = require("../controller/tournamentController");
 const { isAuthenticated } = require('../middleware/authenticate');
 
+const validation = require("../middleware/validate");
+
 // Retrieve All Tournaments
 router.get("/", tournamentController.getAllTournaments);
 
@@ -11,10 +13,10 @@ router.get("/", tournamentController.getAllTournaments);
 router.get("/:id", tournamentController.getSingleTournament);
 
 // Create Tournament
-router.post("/", isAuthenticated, tournamentController.createTournament);
+router.post("/", isAuthenticated, validation.validateTournament, tournamentController.createTournament);
 
 // Update Tournament by Id
-router.put("/:id", isAuthenticated, tournamentController.updateTournament);
+router.put("/:id", isAuthenticated, validation.validateTournament, tournamentController.updateTournament);
 
 // Delete Tournament by Id
 router.delete("/:id", isAuthenticated, tournamentController.deleteTournament);

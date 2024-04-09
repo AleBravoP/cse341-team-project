@@ -31,10 +31,11 @@ const getSingleTournament = async (req, res) => {
 
 const createTournament = async (req, res) => {
     //Validate request
-    if (!req.body.name) {
-        res.status(400).send({ message: 'Tournament name can not be empty!' });
-        return;
-    }
+    // if (!req.body.name) {
+    //     res.status(400).send({ message: 'Tournament name can not be empty!' });
+    //     return;
+    // }
+
     //#swagger.tags = ["Tournaments"]
     //#swagger.summary = Create a new tournament
     const tournament = {
@@ -49,7 +50,8 @@ const createTournament = async (req, res) => {
         .insertOne(tournament);
     if (response.acknowledged > 0){
         res.status(200).send({
-            message: 'Tournament created'
+            message: 'Tournament created',
+            id: response.insertedId
         });
     }
     else {

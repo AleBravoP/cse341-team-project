@@ -35,15 +35,16 @@ const getSingleTeam = async (req, res) => {
 
 const createTeam = async (req, res) => {
     //Validation
-    if (!req.body.name) {
-        res.status(400).send({ message: 'Name can not be empty!' });
-        return;
-    }
+    // if (!req.body.name) {
+    //     res.status(400).send({ message: 'Name can not be empty!' });
+    //     return;
+    // }
     
-    if (!req.body.shortName) {
-        res.status(400).send({ message: 'Short name can not be empty!' });
-        return;
-    }
+    // if (!req.body.shortName) {
+    //     res.status(400).send({ message: 'Short name can not be empty!' });
+    //     return;
+    // }
+
     //#swagger.tags = ["Teams"]
     //#swagger.summary = Create a new team
     const team = {
@@ -57,9 +58,13 @@ const createTeam = async (req, res) => {
         .db()
         .collection("teams")
         .insertOne(team);
+
+    console.log(response)
+
     if (response.acknowledged > 0){
         res.status(200).send({
-            message: 'Team created.' 
+            message: 'Team created.' ,
+            id: response.insertedId
         });
     }
     else {
@@ -85,6 +90,7 @@ const updateTeam = async (req, res) => {
         .db()
         .collection("teams")
         .replaceOne({ _id: teamId }, team);
+
     if (response.modifiedCount > 0) {
         res.status(200).send({
             message: 'Team updated'
